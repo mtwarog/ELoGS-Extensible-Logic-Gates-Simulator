@@ -8,24 +8,24 @@ This simulator:
 **Extensible** means that it allows user to define new machines(gates) by providing truth tables.  
 ## 1. Installation
 ```
-npm install logic-gates
+npm install logic-circuit-sim
 ```
 ## 2. Usage
 In Node:
 ```javascript
 // Class representing circuit:
-const Circuit = require("logic-gates").circuit;
+const Circuit = require("logic-circuit-sim").circuit;
 // Constants like truth tables, machine ports, output values
-const Const = require("logic-gates").constants;
+const Const = require("logic-circuit-sim").constants;
 // Create circuit
 const circuit = new Circuit();
 ```
 ## 3. Example
-Below example implements and simulate following logic circuit:
-![Circuit example](/images/logic_gates_example.svg?raw=true "Circuit example")
+Below example implements and simulate following logic circuit:  
+![Circuit example](https://raw.githubusercontent.com/mtwarog/ELoGS-Extensible-Logic-Gates-Simulator/master/images/logic_gates_example.svg?sanitize=true "Circuit example")
 ```javascript
-const Circuit = require("logic-gates").circuit;
-const Const = require("logic-gates").constants;
+const Circuit = require("logic-circuit-sim").circuit;
+const Const = require("logic-circuit-sim").constants;
 
 const circuit = new Circuit();
 circuit.addMachine("X1", Const.MachineTruthTable.ON);
@@ -61,7 +61,7 @@ console.log(simulationResult.toString());
 ## 4. Circuit
 Circuit is a set of machines and connections between them. Simulation of circuit returns State object which contains all outputs of all machines(gates) present in circuit. If not all inputs are connected, some outputs might be undefined.
 ### 4.1. Adding Machines (Gates)
-To add machine to circuit one need to use `addMachine` method. `constants` object contains [set of predefined machines](###5.1.-predefined-machines) which can be used as follows:
+To add machine to circuit one need to use `addMachine` method. `constants` object contains [set of predefined machines](#51-predefined-machines) which can be used as follows:
 ```javascript
 circuit.addMachine("predefinedMachineName", Const.MachineTruthTable.ON);
 ```
@@ -69,7 +69,7 @@ Custom machines can be specified by providing custom truth table:
 ```javascript
 circuit.addMachine("customMachineName", {"00": [Value.HIGH], "01": [Value.HIGH], "10": [Value.LOW], "11": [Value.LOW]});
 ```
-More on adding custom machines: [Custom Machines](###5.2.-custom-machines)
+More on adding custom machines: [Custom Machines](#52-custom-machines)
 ### 4.2. Adding Connections
 After adding machines one need to specify connections between output port of one machines to input port of other machine. To add connection one need to use `addConnection()` method:
 ```javascript
@@ -99,23 +99,27 @@ In `constants` object one can find predefined machines. It is also feasible to d
 ### 5.1. Predefined Machines
 To be able to use predefined machines one need to import `constants` object Const first:
 ```javascript
-const Const = require("logic-gates").constants;
+const Const = require("logic-circuit-sim").constants;
 ```
 List of available predefined machines:
-| Machine        | Truth Table           |
+
+| Machine | Truth Table |
 | ------------- |:-------------:|
-| Not      | Const.MachineTruthTable.NOT |
-| Or      | Const.MachineTruthTable.OR      |
-| And | Const.MachineTruthTable.AND      |
-| Nor (Not Or)      | Const.MachineTruthTable.NOR      |
-| Nand (Not And)      | Const.MachineTruthTable.NAND |
-| Xor (Exclusive Or)      | Const.MachineTruthTable.XOR      |
+| Not | Const.MachineTruthTable.NOT |
+| Or | Const.MachineTruthTable.OR |
+| And | Const.MachineTruthTable.AND |
+| Nor(Not Or) | Const.MachineTruthTable.NOR |
+| Nand(Not And) | Const.MachineTruthTable.NAND |
+| Xor(Exclusive Or) | Const.MachineTruthTable.XOR |
+
 There are also source machines (having no input and single output):
-| Machine        | Truth Table           |
+
+| Machine | Truth Table |
 | ------------- |:-------------:|
-| High source      | Const.MachineTruthTable.ON |
-| Low source      | Const.MachineTruthTable.OFF      |
-To add machine to circuit see: [Adding Machines (Gates)](###4.1.-adding-machines-(gates))
+| High source | Const.MachineTruthTable.ON |
+| Low source | Const.MachineTruthTable.OFF |
+
+To add machine to circuit see: [Adding Machines (Gates)](#41-adding-machines-gates)
 ### 5.2. Custom Machines
 Custom machines are machines for which truth table is specified by custom object instead of predefined one from `constants` object.  
 Truth table object must specify outputs for all possible inputs. It means that e.g. if machine has two input ports and two output ports, then all output values must be defined for each combination of input ports values.  

@@ -1,5 +1,5 @@
 {
-  "name": "logic-gates-simulator",
+  "name": "logic-circuit-sim",
   "version": "1.0.0",
   "description": "Extensible logic gates simulator. ",
   "main": "index.js",
