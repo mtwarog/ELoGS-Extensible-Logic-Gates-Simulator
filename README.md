@@ -102,19 +102,23 @@ To be able to use predefined machines one need to import `constants` object Cons
 const Const = require("logic-gates").constants;
 ```
 List of available predefined machines:
-| Machine        | Truth Table           |
+
+| Machine | Truth Table |
 | ------------- |:-------------:|
-| Not      | Const.MachineTruthTable.NOT |
-| Or      | Const.MachineTruthTable.OR      |
-| And | Const.MachineTruthTable.AND      |
-| Nor (Not Or)      | Const.MachineTruthTable.NOR      |
-| Nand (Not And)      | Const.MachineTruthTable.NAND |
-| Xor (Exclusive Or)      | Const.MachineTruthTable.XOR      |
+| Not | Const.MachineTruthTable.NOT |
+| Or | Const.MachineTruthTable.OR |
+| And | Const.MachineTruthTable.AND |
+| Nor(Not Or) | Const.MachineTruthTable.NOR |
+| Nand(Not And) | Const.MachineTruthTable.NAND |
+| Xor(Exclusive Or) | Const.MachineTruthTable.XOR |
+
 There are also source machines (having no input and single output):
-| Machine        | Truth Table           |
+
+| Machine | Truth Table |
 | ------------- |:-------------:|
-| High source      | Const.MachineTruthTable.ON |
-| Low source      | Const.MachineTruthTable.OFF      |
+| High source | Const.MachineTruthTable.ON |
+| Low source | Const.MachineTruthTable.OFF |
+
 To add machine to circuit see: [Adding Machines (Gates)](###4.1.-adding-machines-(gates))
 ### 5.2. Custom Machines
 Custom machines are machines for which truth table is specified by custom object instead of predefined one from `constants` object.  
