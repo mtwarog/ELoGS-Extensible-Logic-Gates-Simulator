@@ -1,0 +1,14 @@
+{
+  "name": "logic-gates-simulator",
+  "version": "1.0.0",
+  "description": "Extensible logic gates simulator. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Maciej Twarog",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
