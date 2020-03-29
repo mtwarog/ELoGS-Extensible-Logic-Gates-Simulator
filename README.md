@@ -11,7 +11,7 @@ This simulator:
 npm install logic-circuit-sim
 ```
 ## 2. Usage
-In Node:
+### 2.1. In Node
 ```javascript
 // Class representing circuit:
 const Circuit = require("logic-circuit-sim").circuit;
@@ -20,6 +20,23 @@ const Const = require("logic-circuit-sim").constants;
 // Create circuit
 const circuit = new Circuit();
 ```
+### 2.2. In Browser
+Minified version of the package(`elogs.min.js`) can be used directly in browser. It can be found in `node_modules/logic-circuit-sim/dist` after package installation. It can also be found in [GitHub repository](https://github.com/mtwarog/ELoGS-Extensible-Logic-Gates-Simulator)  
+In your html add ELoGS script before script which will use it:
+```html
+<script src="elogs.min.js"></script>
+```
+Package registers global object (i.e. property of `window` object) named `ELoGS`.  
+To use it in your script:
+```javascript
+// Class representing circuit:
+const Circuit = ELoGS.circuit;
+// Constants like truth tables, machine ports, output values
+const Const = ELoGS.constants;
+// Create circuit
+const circuit = new Circuit();
+```
+Alternatively, one can use Node version of package and include it in frontend code using bundlers like [WebPack](https://webpack.js.org/), [Parcel](https://parceljs.org/) or [Browserify](http://browserify.org/).
 ## 3. Example
 Below example implements and simulate following logic circuit:  
 ![Circuit example](https://raw.githubusercontent.com/mtwarog/ELoGS-Extensible-Logic-Gates-Simulator/master/images/logic_gates_example.svg?sanitize=true "Circuit example")
@@ -54,7 +71,7 @@ const simulationResult = circuit.simulate();
 
 console.log(`Value of Y (for X1,X2,X3 = 1 (High)): ${simulationResult.state["or2"][Const.Port.A]}`);
 console.log("Get output state of specific machine: ");
-console.log(`State of "and" machine: ${simulationResult.state["and"]}`);
+console.log(`State of "and" machine: ${simulationResult.state["and1"]}`);
 console.log("Human-readable form of whole circuit output state:")
 console.log(simulationResult.toString());
 ```
