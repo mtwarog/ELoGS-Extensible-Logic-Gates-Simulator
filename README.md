@@ -71,7 +71,7 @@ const simulationResult = circuit.simulate();
 
 console.log(`Value of Y (for X1,X2,X3 = 1 (High)): ${simulationResult.state["or2"][Const.Port.A]}`);
 console.log("Get output state of specific machine: ");
-console.log(`State of "and" machine: ${simulationResult.state["and1"]}`);
+console.log(`State of "and1" machine: ${simulationResult.state["and1"]}`);
 console.log("Human-readable form of whole circuit output state:")
 console.log(simulationResult.toString());
 ```
