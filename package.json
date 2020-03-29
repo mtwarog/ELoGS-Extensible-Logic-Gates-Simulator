@@ -1,14 +1,40 @@
 {
   "name": "logic-circuit-sim",
-  "version": "1.0.0",
-  "description": "Extensible logic gates simulator. ",
+  "version": "1.1.0",
+  "description": "Extensible logic gates simulator. Calculates output values of logic ciruits.",
+  "keywords": [
+    "logic",
+    "circuit",
+    "gates",
+    "simulator",
+    "calculator",
+    "digital",
+    "electronics"
+  ],
+  "homepage": "https://github.com/mtwarog/ELoGS-Extensible-Logic-Gates-Simulator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mtwarog/ELoGS-Extensible-Logic-Gates-Simulator.git"
+  },
   "main": "index.js",
+  "files": [
+    "index.js",
+    "modules",
+    "dist"
+  ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run test && npm run build:browser",
+    "build:browser": "browserify index_browser.js -o dist/elogs_browser.js && npm run build:minify",
+    "build:minify": "uglifyjs dist/elogs_browser.js -o dist/elogs_browser.min.js && npm run clear",
+    "clear": "rm dist/elogs_browser.js",
+    "prepublish": "npm run build"
   },
   "author": "Maciej Twarog",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "browserify": "^16.5.0",
+    "jest": "^25.1.0",
+    "uglify-es": "^3.3.9"
   }
 }
